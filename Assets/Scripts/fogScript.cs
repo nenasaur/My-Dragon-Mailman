@@ -2,23 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pipes : MonoBehaviour
+public class fogScript : MonoBehaviour
 {
-    private float speed = 5f;
-
-    private int Score = GameController.instance.GetScore();
-
-
-
+     private int Score = GameController.instance.GetScore();
+    private float speed = 2.5f;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        float randomY = Random.Range(-0.4f, 0.4f);
+        float randomY = Random.Range(-3f, 3f);
         transform.position = new Vector2(transform.position.x, randomY);
-
-
     }
 
     // Update is called once per frame
@@ -28,13 +22,10 @@ public class Pipes : MonoBehaviour
             transform.position.x + speed * Time.deltaTime,
             transform.position.y
         );
-        if (transform.position.x > 10)
+        if (transform.position.x > 8)
         {
             Destroy(gameObject);
         }
 
-       
     }
-
-  
-}  
+}

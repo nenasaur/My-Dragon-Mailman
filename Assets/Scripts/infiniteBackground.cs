@@ -7,12 +7,14 @@ public class infiniteBackground : MonoBehaviour
 {
 
 
-    public float backgroundVelocity;    // Start is called before the first frame update
+    private float backgroundVelocity = 0.5f;    // Start is called before the first frame update
 
     // Update is called once per frame
+    private int Score = GameController.instance.GetScore();
     void Update()
     {
         backgroundMoviment();
+        
     }
 
     void backgroundMoviment()

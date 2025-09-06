@@ -8,17 +8,18 @@ public class GameController : MonoBehaviour
     public static GameController instance;
 
     [SerializeField] private GameObject message, Dragon;
-    [SerializeField] private GameObject pipes, source, gameOver;
+    [SerializeField] private GameObject pipes, source, gameOver,fog;
     [SerializeField] private Text scoreText;
     private float interval = 1.5f;
-    private bool started;
+    private bool started, fogActived;
     private int score;
 
 
 
 
+
     // Start is called before the first frame update
-     private void Awake()
+    private void Awake()
     {
         if (instance == null)
         {
@@ -40,15 +41,30 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            // message.SetActive(true);
-            Destroy(message);
-            Dragon.SetActive(true);
-            started = true;
 
+        if (score % 10 == 0 && score != 0 &&   !fogActived)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                Instantiate(fog);
+               
+            }
+            fogActived = true;
         }
+        if (score % 10 == 1)
+        {
+            fogActived = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+            {
+                // message.SetActive(true);
+                Destroy(message);
+                Dragon.SetActive(true);
+                started = true;
+
+            }
     }
+    
      private void SpawnPipes()
     {
         if (!started) return;
@@ -60,6 +76,7 @@ public class GameController : MonoBehaviour
         );
     }
 
+     
     public void IncreaseScore(int score)
     {
         this.score += score;
