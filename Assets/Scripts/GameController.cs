@@ -8,7 +8,8 @@ public class GameController : MonoBehaviour
     public static GameController instance;
 
     [SerializeField] private GameObject message, Dragon;
-    [SerializeField] private GameObject pipes, source, gameOver,fog;
+    [SerializeField] private GameObject pipes, source, gameOver, fog ;
+    
     [SerializeField] private Text scoreText;
     private float interval = 1.5f;
     private bool started, fogActived;
@@ -36,18 +37,19 @@ public class GameController : MonoBehaviour
         score = 0;
         started = false;
         InvokeRepeating("SpawnPipes", 0f, interval);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (score % 10 == 0 && score != 0 &&   !fogActived)
+        if (score % 10 == 0 && score != 0 && !fogActived)
         {
             for (int i = 0; i < 3; i++)
             {
                 Instantiate(fog);
-               
+
             }
             fogActived = true;
         }
@@ -56,16 +58,16 @@ public class GameController : MonoBehaviour
             fogActived = false;
         }
         if (Input.GetKeyDown(KeyCode.Space))
-            {
-                // message.SetActive(true);
-                Destroy(message);
-                Dragon.SetActive(true);
-                started = true;
+        {
+            // message.SetActive(true);
+            Destroy(message);
+            Dragon.SetActive(true);
+            started = true;
 
-            }
+        }
     }
-    
-     private void SpawnPipes()
+
+    private void SpawnPipes()
     {
         if (!started) return;
 
@@ -75,8 +77,9 @@ public class GameController : MonoBehaviour
             Quaternion.identity         // Com rotação padrão (sem rotação, identidade)
         );
     }
-
      
+
+
     public void IncreaseScore(int score)
     {
         this.score += score;
@@ -85,7 +88,7 @@ public class GameController : MonoBehaviour
 
     public void GameOver()
     {
-        
+
         gameOver.SetActive(true);
         Time.timeScale = 0;
     }
@@ -94,5 +97,8 @@ public class GameController : MonoBehaviour
     {
         return score;
     }
+
+    
+
 }
 

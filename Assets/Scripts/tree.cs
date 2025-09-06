@@ -7,6 +7,7 @@ public class Pipes : MonoBehaviour
     private float speed = 5f;
 
     private int Score = GameController.instance.GetScore();
+    [SerializeField] private GameObject oranBerry;
 
 
 
@@ -33,8 +34,17 @@ public class Pipes : MonoBehaviour
             Destroy(gameObject);
         }
 
-       
-    }
 
+    }
+     void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+           
+            Destroy(oranBerry);
+           
+            
+        }
+    }
   
 }  

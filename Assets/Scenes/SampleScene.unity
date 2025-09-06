@@ -406,9 +406,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213687597}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1368, y: -3.2646, z: 0}
-  m_LocalScale: {x: 3.117, y: 1.009, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.060499668, y: -3.3701, z: 0}
+  m_LocalScale: {x: 3.1434946, y: 1.039919, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -781,6 +781,8 @@ MonoBehaviour:
   source: {fileID: 538620779}
   gameOver: {fileID: 2131005564}
   fog: {fileID: 1765029042119902445, guid: 23958553dce18604fa16606fa1004d59, type: 3}
+  oranBerry: {fileID: 8091775001638312372, guid: 5f762ae2ec3e2f54f843bdb12525b380, type: 3}
+  oranBerrySource: {fileID: 2039328514}
   scoreText: {fileID: 949965410}
 --- !u!1 &949965408
 GameObject:
@@ -1125,7 +1127,7 @@ GameObject:
   - component: {fileID: 1959985014}
   m_Layer: 0
   m_Name: dragonite-midflap
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1305,6 +1307,8 @@ MonoBehaviour:
   jumpSpeed: 5
   jumpSound: {fileID: 8300000, guid: 5ddbc26a3793e934188c675091e0d60e, type: 3}
   deathSound: {fileID: 8300000, guid: d2429e347fa933b40ae9f37df71b1efb, type: 3}
+  scoreSound: {fileID: 8300000, guid: 6067a3fc0aca9c94f94ca167b9852f9b, type: 3}
+  oranBerry: {fileID: 0}
 --- !u!114 &1959985014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1420,6 +1424,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &2039328514
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2039328515}
+  m_Layer: 0
+  m_Name: OranBerrySource
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2039328515
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039328514}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.65, y: 4.68, z: 0.037102968}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2131005564
 GameObject:
   m_ObjectHideFlags: 0
@@ -1521,3 +1556,4 @@ SceneRoots:
   - {fileID: 1591153793}
   - {fileID: 1670090914}
   - {fileID: 213687600}
+  - {fileID: 2039328515}

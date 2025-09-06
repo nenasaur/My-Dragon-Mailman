@@ -5,7 +5,10 @@ using UnityEngine;
 public class DragonScript : MonoBehaviour
 {
     [SerializeField] private float jumpSpeed;
-    [SerializeField] private AudioClip jumpSound, deathSound;
+    [SerializeField] private AudioClip jumpSound, deathSound, scoreSound;
+    
+    
+
 
     private bool jumping;
     private Rigidbody2D rb;
@@ -39,7 +42,11 @@ public class DragonScript : MonoBehaviour
     {
         if (other.CompareTag("Score"))
         {
+            AudioController.instance.PlayAudioClip(scoreSound, false);
             GameController.instance.IncreaseScore(1);
+            
+           
+            
         }
     }
 
@@ -48,7 +55,7 @@ public class DragonScript : MonoBehaviour
         if (other.gameObject.CompareTag("Tree") || other.gameObject.CompareTag("Ground"))
         {
             AudioController.instance.PlayAudioClip(deathSound, false);
-            GameController.instance.GameOver();
+           GameController.instance.GameOver();
         }
     }
 
