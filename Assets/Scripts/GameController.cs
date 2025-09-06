@@ -1,25 +1,28 @@
+//**************************************** GameController.cs *****************************************
+
+//---------------calling the libraries---------------
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+//---------------------------------------------------
 
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
+    //----------------------------------------variables---------------------------------------    
+
     [SerializeField] private GameObject message, Dragon;
-    [SerializeField] private GameObject pipes, source, gameOver, fog ;
-    
+    [SerializeField] private GameObject tree, source, gameOver, fog;
+
     [SerializeField] private Text scoreText;
     private float interval = 1.5f;
     private bool started, fogActived;
     private int score;
+    //----------------------------------------------------------------------------------------    
 
 
-
-
-
-    // Start is called before the first frame update
     private void Awake()
     {
         if (instance == null)
@@ -32,21 +35,23 @@ public class GameController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    //default values ​​when starting the game
     void Start()
     {
         score = 0;
         started = false;
-        InvokeRepeating("SpawnPipes", 0f, interval);
-        
+        InvokeRepeating("SpawnTrees", 0f, interval);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        // conditions to spawn fog
         if (score % 10 == 0 && score != 0 && !fogActived)
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)// spawn 3 fogs
             {
                 Instantiate(fog);
 
@@ -57,6 +62,8 @@ public class GameController : MonoBehaviour
         {
             fogActived = false;
         }
+
+        //starting the game
         if (Input.GetKeyDown(KeyCode.Space))
         {
             // message.SetActive(true);
@@ -67,25 +74,30 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void SpawnPipes()
+    //function responsible for spawning trees
+    private void SpawnTrees()
     {
         if (!started) return;
 
         Instantiate(
-            pipes,                      // Instancia os pilares
-            source.transform.position,  // Na posição do objeto source
-            Quaternion.identity         // Com rotação padrão (sem rotação, identidade)
+            tree,                      // Instantiate the trees
+            source.transform.position,  // At the position of the source object
+            Quaternion.identity         // With default rotation (no rotation, identity)
         );
     }
-     
 
 
+    //----------------------------------------publicFunctions----------------------------------------
+
+
+    //function responsible for converting the int variable Score to String
     public void IncreaseScore(int score)
     {
         this.score += score;
         scoreText.text = this.score.ToString();
     }
 
+      //function to use when the player hits the ground or collides with trees
     public void GameOver()
     {
 
@@ -93,10 +105,13 @@ public class GameController : MonoBehaviour
         Time.timeScale = 0;
     }
 
+    //function to be used in other scripts to import the score value
     public int GetScore()
     {
         return score;
     }
+//-----------------------------------------------------------------------------------------------
+    
 
     
 

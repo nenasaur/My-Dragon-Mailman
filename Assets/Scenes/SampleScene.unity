@@ -777,12 +777,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   message: {fileID: 117013227}
   Dragon: {fileID: 1959985006}
-  pipes: {fileID: 2841665713242591779, guid: 0526dfb8e661a82418c3c3e980dda923, type: 3}
+  tree: {fileID: 2841665713242591779, guid: 0526dfb8e661a82418c3c3e980dda923, type: 3}
   source: {fileID: 538620779}
   gameOver: {fileID: 2131005564}
   fog: {fileID: 1765029042119902445, guid: 23958553dce18604fa16606fa1004d59, type: 3}
-  oranBerry: {fileID: 8091775001638312372, guid: 5f762ae2ec3e2f54f843bdb12525b380, type: 3}
-  oranBerrySource: {fileID: 2039328514}
   scoreText: {fileID: 949965410}
 --- !u!1 &949965408
 GameObject:
@@ -1308,7 +1306,6 @@ MonoBehaviour:
   jumpSound: {fileID: 8300000, guid: 5ddbc26a3793e934188c675091e0d60e, type: 3}
   deathSound: {fileID: 8300000, guid: d2429e347fa933b40ae9f37df71b1efb, type: 3}
   scoreSound: {fileID: 8300000, guid: 6067a3fc0aca9c94f94ca167b9852f9b, type: 3}
-  oranBerry: {fileID: 0}
 --- !u!114 &1959985014
 MonoBehaviour:
   m_ObjectHideFlags: 0
