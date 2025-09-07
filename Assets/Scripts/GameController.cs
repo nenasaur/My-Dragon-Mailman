@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
-    //----------------------------------------variables---------------------------------------    
+    //--------------------------------------------------variables------------------------------------------------------    
 
     [SerializeField] private GameObject message, Dragon;
     [SerializeField] private GameObject tree, source, gameOver, fog;
@@ -20,8 +20,10 @@ public class GameController : MonoBehaviour
     [SerializeField] private Text scoreText;
     private float interval = 1.5f;
     private bool started, fogActived;
+
+
     private int score;
-    //----------------------------------------------------------------------------------------    
+    //----------------------------------------------------------------------------------------------------------------  
 
 
     private void Awake()
@@ -49,6 +51,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      
         // conditions to spawn fog
         if (score % 10 == 0 && score != 0 && !fogActived)
         {
@@ -67,15 +70,14 @@ public class GameController : MonoBehaviour
         //starting the game
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            // message.SetActive(true);
             Destroy(message);
             Dragon.SetActive(true);
             started = true;
         }
 
-     //-------------------------------------------receiveALetter-------------------------------------------
+        //-------------------------------------------receiveALetter-------------------------------------------
 
-     //                            conditions to pokemon receive the letter
+        //                            conditions to pokemon receive the letter
 
         if (score == 25 && !paichirisu.activeInHierarchy)
         {
@@ -99,8 +101,8 @@ public class GameController : MonoBehaviour
             Invoke("spawnSwablu", 1.5f);
             Invoke("desablePokemon", 2f);
         }
-        
-     //----------------------------------------------------------------------------------------------------
+
+        //----------------------------------------------------------------------------------------------------
 
     }
 
@@ -108,7 +110,7 @@ public class GameController : MonoBehaviour
 
     //        methods responsible for showing the Pokémon receiving the card and then disabling them
 
-   //Paichirisu method
+    //Paichirisu method
     void spawnPaichirisu()
     {
         paichirisu.SetActive(false);
@@ -127,7 +129,6 @@ public class GameController : MonoBehaviour
     {
         swablu.SetActive(false);
         happySwablu.SetActive(true);
-
 
     }
 
@@ -165,7 +166,7 @@ public class GameController : MonoBehaviour
         scoreText.text = this.score.ToString();
     }
 
-      //function to use when the player hits the ground or collides with trees
+    //function to use when the player hits the ground or collides with trees
     public void GameOver()
     {
 
@@ -178,10 +179,17 @@ public class GameController : MonoBehaviour
     {
         return score;
     }
-//-----------------------------------------------------------------------------------------------
-    
+
+    public bool GetStarted()
+    {
+        return started;
+    }
 
     
+//-----------------------------------------------------------------------------------------------
+
+
+
 
 }
 

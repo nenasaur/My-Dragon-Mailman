@@ -13,13 +13,25 @@ public class infiniteBackground : MonoBehaviour
 
     private float backgroundVelocity = 0.5f; // speed of background movement  
 
-    private int Score = GameController.instance.GetScore();// get the Score from GameController
+    //check if the game was started by GameController
+    private bool started = GameController.instance.GetStarted();
+    
+    // get the Score from GameController
+    private int Score = GameController.instance.GetScore();
 
 
     void Update()
     {
+        
+        //Check if there was a change in the started value
+        started = GameController.instance.GetStarted();
+
+   
         // the method is called to perform the movement of the background
-        backgroundMoviment();
+        if (started)
+        {
+            backgroundMoviment();
+        }
         
     }
 
