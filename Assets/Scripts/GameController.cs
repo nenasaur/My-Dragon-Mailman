@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
+
         // conditions to spawn fog
         if (score % 10 == 0 && score != 0 && !fogActived)
         {
@@ -185,6 +185,7 @@ public class GameController : MonoBehaviour
         return started;
     }
 
+    
     
 //-----------------------------------------------------------------------------------------------
 
