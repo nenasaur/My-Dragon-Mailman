@@ -10,7 +10,7 @@ public class DragonScript : MonoBehaviour
 
     //----------------------------------------variables---------------------------------------  
     [SerializeField] private float jumpSpeed;
-    
+
     [SerializeField] private AudioClip jumpSound, deathSound, scoreSound;
     private bool jumping;
     private Rigidbody2D rb;
@@ -32,9 +32,9 @@ public class DragonScript : MonoBehaviour
         //space key will be the button for the dragon to jump
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            jumping = true; 
-        }    
-      
+            jumping = true;
+        }
+
     }
 
 
@@ -48,7 +48,7 @@ public class DragonScript : MonoBehaviour
             rb.velocity = Vector2.up * jumpSpeed;
             jumping = false;
         }
-        
+
     }
 
     //function responsible for increasing the score
@@ -68,7 +68,7 @@ public class DragonScript : MonoBehaviour
         if (other.gameObject.CompareTag("Tree") || other.gameObject.CompareTag("Ground"))
         {
             AudioController.instance.PlayAudioClip(deathSound, false);
-            //   GameController.instance.GameOver();
+              GameController.instance.GameOver();
         }
     }
     

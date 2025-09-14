@@ -15,7 +15,8 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private GameObject message, Dragon;
     [SerializeField] private GameObject tree, source, gameOver, fog;
-    [SerializeField] private GameObject paichirisu, happyPaichirisu, noctowl, happyNoctolw, swablu, happySwablu;
+    [SerializeField] private GameObject ariados, paichirisu, noctowl,  swablu;
+    [SerializeField] private GameObject happyAriados, happyPaichirisu, happyNoctolw, happySwablu;
 
     [SerializeField] private Text scoreText;
     private float interval = 1.5f;
@@ -79,6 +80,15 @@ public class GameController : MonoBehaviour
 
         //                            conditions to pokemon receive the letter
 
+
+        if (score == 5 && !ariados.activeInHierarchy)
+        {
+            ariados.SetActive(true);
+            Invoke("spawnAriados", 1.5f);
+            Invoke("desablePokemon", 2f);
+
+
+        }
         if (score == 25 && !paichirisu.activeInHierarchy)
         {
             paichirisu.SetActive(true);
@@ -132,13 +142,20 @@ public class GameController : MonoBehaviour
 
     }
 
-    //method to disable the pokémon
+    void spawnAriados()
+    {
+        ariados.SetActive(false);
+        happyAriados.SetActive(true);
+    }
+
+
     void desablePokemon()
     {
-        //this method does nothing
+        //method to disable the pokémon
         happyPaichirisu.SetActive(false);
         happyNoctolw.SetActive(false);
         happySwablu.SetActive(false);
+        happyAriados.SetActive(false);
     }
 
     //----------------------------------------------------------------------------------------------------
@@ -193,4 +210,3 @@ public class GameController : MonoBehaviour
 
 
 }
-
