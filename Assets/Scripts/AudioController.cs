@@ -13,6 +13,8 @@ public class AudioController : MonoBehaviour
     public static AudioController instance;
 
     [SerializeField] private AudioSource soundSource;
+     [SerializeField] private AudioSource backgorundsoundSource;
+    [SerializeField] private AudioClip soundTrack;
     
     //----------------------------------------------------------------------------------------
 
@@ -28,6 +30,14 @@ public class AudioController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    void Start()
+    {
+        backgorundsoundSource.clip = soundTrack;
+        backgorundsoundSource.loop = true;
+        backgorundsoundSource.Play();
+    }
+    
 
 //function responsible for playing audioclips 
     public void PlayAudioClip(AudioClip sound, bool loop)

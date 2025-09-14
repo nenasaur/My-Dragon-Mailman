@@ -22,6 +22,7 @@ public class fogScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
          //part responsible for changing the height of fogs
         float randomY = Random.Range(-3f, 3f);
         transform.position = new Vector2(transform.position.x, randomY);

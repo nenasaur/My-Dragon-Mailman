@@ -68,7 +68,7 @@ public class DragonScript : MonoBehaviour
         if (other.gameObject.CompareTag("Tree") || other.gameObject.CompareTag("Ground"))
         {
             AudioController.instance.PlayAudioClip(deathSound, false);
-              GameController.instance.GameOver();
+           // GameController.instance.GameOver();
         }
     }
     

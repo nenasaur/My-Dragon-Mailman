@@ -19,10 +19,10 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject happyAriados, happyPaichirisu, happyNoctolw, happySwablu;
 
     [SerializeField] private Text scoreText;
+
+
     private float interval = 1.5f;
     private bool started, fogActived;
-
-
     private int score;
     //----------------------------------------------------------------------------------------------------------------  
 
@@ -142,6 +142,7 @@ public class GameController : MonoBehaviour
 
     }
 
+   //Ariados method
     void spawnAriados()
     {
         ariados.SetActive(false);
