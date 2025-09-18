@@ -24,6 +24,10 @@ public class DragonScript : MonoBehaviour
         jumping = false;
         rb = GetComponent<Rigidbody2D>();
 
+        //freeze the rotation for the dragon
+        GetComponent<Rigidbody2D>().freezeRotation = true;
+
+
     }
     // Update is called once per frame
     void Update()
@@ -68,7 +72,7 @@ public class DragonScript : MonoBehaviour
         if (other.gameObject.CompareTag("Tree") || other.gameObject.CompareTag("Ground"))
         {
             AudioController.instance.PlayAudioClip(deathSound, false);
-           // GameController.instance.GameOver();
+            GameController.instance.GameOver();
         }
     }
     

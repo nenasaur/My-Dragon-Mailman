@@ -15,8 +15,7 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private GameObject message, Dragon;
     [SerializeField] private GameObject tree, source, gameOver, fog;
-    [SerializeField] private GameObject ariados, paichirisu, noctowl,  swablu;
-    [SerializeField] private GameObject happyAriados, happyPaichirisu, happyNoctolw, happySwablu;
+   
 
     [SerializeField] private Text scoreText;
 
@@ -76,91 +75,7 @@ public class GameController : MonoBehaviour
             started = true;
         }
 
-        //-------------------------------------------receiveALetter-------------------------------------------
-
-        //                            conditions to pokemon receive the letter
-
-
-        if (score == 5 && !ariados.activeInHierarchy)
-        {
-            ariados.SetActive(true);
-            Invoke("spawnAriados", 1.5f);
-            Invoke("desablePokemon", 2f);
-
-
-        }
-        if (score == 25 && !paichirisu.activeInHierarchy)
-        {
-            paichirisu.SetActive(true);
-            Invoke("spawnPaichirisu", 1.5f);
-            Invoke("desablePokemon", 2f);
-
-
-        }
-
-        if (score == 50 && !noctowl.activeInHierarchy)
-        {
-            noctowl.SetActive(true);
-            Invoke("spawnNoctowl", 1.5f);
-            Invoke("desablePokemon", 2f);
-
-        }
-        if (score == 75 && !swablu.activeInHierarchy)
-        {
-            swablu.SetActive(true);
-            Invoke("spawnSwablu", 1.5f);
-            Invoke("desablePokemon", 2f);
-        }
-
-        //----------------------------------------------------------------------------------------------------
-
     }
-
-    //---------------------------------receiveALetterMethods-----------------------------------------------
-
-    //        methods responsible for showing the Pokémon receiving the card and then disabling them
-
-    //Paichirisu method
-    void spawnPaichirisu()
-    {
-        paichirisu.SetActive(false);
-        happyPaichirisu.SetActive(true);
-    }
-
-    //Noctowl method
-    void spawnNoctowl()
-    {
-        noctowl.SetActive(false);
-        happyNoctolw.SetActive(true);
-    }
-
-    //Swablu method
-    void spawnSwablu()
-    {
-        swablu.SetActive(false);
-        happySwablu.SetActive(true);
-
-    }
-
-   //Ariados method
-    void spawnAriados()
-    {
-        ariados.SetActive(false);
-        happyAriados.SetActive(true);
-    }
-
-
-    void desablePokemon()
-    {
-        //method to disable the pokémon
-        happyPaichirisu.SetActive(false);
-        happyNoctolw.SetActive(false);
-        happySwablu.SetActive(false);
-        happyAriados.SetActive(false);
-    }
-
-    //----------------------------------------------------------------------------------------------------
-
     //function responsible for spawning trees
     private void SpawnTrees()
     {

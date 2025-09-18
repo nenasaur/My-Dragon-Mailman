@@ -14,7 +14,9 @@ public class trees : MonoBehaviour
 
     // get the score from GameController
     private int Score = GameController.instance.GetScore();
-    [SerializeField] private GameObject oranBerry;
+
+     [SerializeField] private GameObject ariados, paichirisu, noctowl,  swablu;
+    [SerializeField] private GameObject happyAriados, happyPaichirisu, happyNoctolw, happySwablu;
 
     //---------------------------------------------------------------------------------------- 
 
@@ -29,6 +31,56 @@ public class trees : MonoBehaviour
         float randomY = Random.Range(-0.4f, 0.4f);
         transform.position = new Vector2(transform.position.x, randomY);
 
+        //-------------------------------------------receiveALetter-------------------------------------------
+
+        //                     conditions to choose the Pokémon that will receive the letter
+
+        /*                                     priority table            
+
+                                          +---------------+------+           
+                                          |     pokemon   | Nº   |
+                                          +---------------+------+ 
+                                          |    noctwol    | 1º   |
+                                          +---------------+------+ 
+                                          |    ariados    | 2º   |
+                                          +---------------+------+ 
+                                          |    swablu     | 3º   |
+                                          +---------------+------+ 
+                                          |  paichirisu   |  4º  |
+                                          +---------------+------+ 
+               
+        */
+
+        //noctowl conditions
+        if (Score % 7 == 0 && Score != 0 && Score > 50)
+        {
+            noctowl.SetActive(true);
+        }
+        
+         //ariados conditions
+        if (!noctowl.activeInHierarchy && Score % 5 == 0 && Score != 0 && Score > 15)
+        {
+            ariados.SetActive(true);
+        }
+
+       //swablu conditions 
+        if (!ariados.activeInHierarchy && Score % 3 == 0 && Score != 0)
+        {
+            swablu.SetActive(true);
+        }
+
+        //pachirisu conditions 
+        if (Score % 2 == 0 && !swablu.activeInHierarchy || Score == 0 || Score == 1)
+        {
+            paichirisu.SetActive(true);
+        }
+        //condition for some other prime number
+        if (!swablu.activeInHierarchy && Score % 2 == 1)
+        {
+            paichirisu.SetActive(true);
+        }
+        
+        //----------------------------------------------------------------------------------------------------
 
     }
 
@@ -48,17 +100,85 @@ public class trees : MonoBehaviour
             Destroy(gameObject);
         }
 
+    }
+
+    //---------------------------------receiveALetterMethods-----------------------------------------------
+
+    //        methods responsible for showing the Pokémon receiving the card and then disabling them
+
+    //Paichirisu method
+    void spawnPaichirisu()
+    {
+        paichirisu.SetActive(false);
+        happyPaichirisu.SetActive(true);
+    }
+
+    //Noctowl method
+    void spawnNoctowl()
+    {
+        noctowl.SetActive(false);
+        happyNoctolw.SetActive(true);
+    }
+
+    //Swablu method
+    void spawnSwablu()
+    {
+        swablu.SetActive(false);
+        happySwablu.SetActive(true);
 
     }
 
-    //fuction responsible for destroying the oran berry when the dragon collides with it
+   //Ariados method
+    void spawnAriados()
+    {
+        ariados.SetActive(false);
+        happyAriados.SetActive(true);
+    }
+
+    //----------------------------------------------------------------------------------------------------
+
+
+
+    
+
+    //function that checks when a Pokémon collides with the player
      void OnTriggerEnter2D(Collider2D other)
     {
 
         if (other.CompareTag("Player"))
         {
-            Destroy(oranBerry);
+            //what to do according to the pokemon in the tree 
+        
+            //for noctowl
+            if (noctowl.activeInHierarchy)
+            {
+                Invoke("spawnNoctowl", 0.5f);
+                ariados.SetActive(false);
+                swablu.SetActive(false);
+                paichirisu.SetActive(false);
+            }
+            
+            //for paichirisu
+            if (paichirisu.activeInHierarchy)
+            {
+                Invoke("spawnPaichirisu", 0.5f);
+            }
+
+            //for swablu 
+            if (swablu.activeInHierarchy)
+            {
+                Invoke("spawnSwablu", 0.5f);
+                paichirisu.SetActive(false);
+            }
+
+             //for ariados
+            if (ariados.activeInHierarchy)
+            {
+                Invoke("spawnAriados", 0.5f);
+                swablu.SetActive(false);
+                paichirisu.SetActive(false);
+            }
+           
         }
     }
-  
-}  
+}
