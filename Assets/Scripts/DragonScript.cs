@@ -11,8 +11,9 @@ public class DragonScript : MonoBehaviour
     //----------------------------------------variables---------------------------------------  
     [SerializeField] private float jumpSpeed;
 
-    [SerializeField] private AudioClip jumpSound, deathSound, scoreSound;
+    [SerializeField] private AudioClip jumpSound, scoreSound;
     private bool jumping;
+
     private Rigidbody2D rb;
     //----------------------------------------------------------------------------------------  
 
@@ -65,15 +66,5 @@ public class DragonScript : MonoBehaviour
 
         }
     }
-
-    //function that checks whether the player collided with the ground or trees
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Tree") || other.gameObject.CompareTag("Ground"))
-        {
-            AudioController.instance.PlayAudioClip(deathSound, false);
-            GameController.instance.GameOver();
-        }
-    }
-    
+   
 }

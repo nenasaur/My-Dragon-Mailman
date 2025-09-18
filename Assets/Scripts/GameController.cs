@@ -14,14 +14,14 @@ public class GameController : MonoBehaviour
     //--------------------------------------------------variables------------------------------------------------------    
 
     [SerializeField] private GameObject message, Dragon;
-    [SerializeField] private GameObject tree, source, gameOver, fog;
+    [SerializeField] private GameObject tree, source, gameOver, fog, oranberry ;
    
 
     [SerializeField] private Text scoreText;
 
 
     private float interval = 1.5f;
-    private bool started, fogActived;
+    private bool started, fogActived ;
     private int score;
     //----------------------------------------------------------------------------------------------------------------  
 
@@ -44,8 +44,7 @@ public class GameController : MonoBehaviour
     {
         score = 0;
         started = false;
-        InvokeRepeating("SpawnTrees", 0f, interval);
-
+        InvokeRepeating("SpawnTrees", 0f, interval);//spawn trees 
     }
 
     // Update is called once per frame
@@ -62,11 +61,13 @@ public class GameController : MonoBehaviour
             }
             fogActived = true;
         }
+
+        //change the value of these variables so that fog and oranberry appear again
         if (score % 10 == 1)
         {
             fogActived = false;
         }
-
+        
         //starting the game
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -75,15 +76,17 @@ public class GameController : MonoBehaviour
             started = true;
         }
 
+
     }
+
     //function responsible for spawning trees
     private void SpawnTrees()
     {
         if (!started) return;
 
         Instantiate(
-            tree,                      // Instantiate the trees
-            source.transform.position,  // At the position of the source object
+            tree,                         // Instantiate the trees
+            source.transform.position,   // At the position of the source object
             Quaternion.identity         // With default rotation (no rotation, identity)
         );
     }
@@ -102,7 +105,6 @@ public class GameController : MonoBehaviour
     //function to use when the player hits the ground or collides with trees
     public void GameOver()
     {
-
         gameOver.SetActive(true);
         Time.timeScale = 0;
     }
