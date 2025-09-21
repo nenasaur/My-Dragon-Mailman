@@ -13,16 +13,17 @@ public class GameController : MonoBehaviour
 
     //--------------------------------------------------variables------------------------------------------------------    
 
+    public HeartSystem heartsystem;
     [SerializeField] private GameObject message, Dragon;
     [SerializeField] private GameObject tree, source, gameOver, fog, oranberry ;
-   
-
     [SerializeField] private Text scoreText;
 
 
     private float interval = 1.5f;
-    private bool started, fogActived ;
-    private int score;
+    private bool started, fogActived, oranBerryActived;
+    private int score, health ;
+    
+
     //----------------------------------------------------------------------------------------------------------------  
 
 
@@ -41,7 +42,7 @@ public class GameController : MonoBehaviour
 
     //default values ​​when starting the game
     void Start()
-    {
+    {  
         score = 0;
         started = false;
         InvokeRepeating("SpawnTrees", 0f, interval);//spawn trees 
@@ -51,21 +52,42 @@ public class GameController : MonoBehaviour
     void Update()
     {
 
+        // get the health value from heartsystem script
+        health = heartsystem.GetHealth();
+       
+        
+
         // conditions to spawn fog
         if (score % 10 == 0 && score != 0 && !fogActived)
         {
-            for (int i = 0; i < 3; i++)// spawn 3 fogs
+            fogActived = true;
+            for (int i = 0; i < 5; i++)// spawn 3 fogs
             {
                 Instantiate(fog);
 
             }
-            fogActived = true;
         }
 
-        //change the value of these variables so that fog and oranberry appear again
+        // conditions to spawn oranBerry
+        if (health < 3 && !oranBerryActived && !fogActived)
+        {
+            for (int i = 0; i <1 ; i++)// spawn 1 oranBerry
+            {
+                Instantiate(oranberry);//spawn the berry 
+            }
+            oranBerryActived = true;
+        }
+        
+        //changes the value of the variable fogActived to be used again
         if (score % 10 == 1)
         {
             fogActived = false;
+        }
+
+        //changes the value of the variable oranBerryActived to be used again
+        if (health == 3 || score % 10 == 0)
+        {
+            oranBerryActived = false;
         }
         
         //starting the game
@@ -91,6 +113,7 @@ public class GameController : MonoBehaviour
         );
     }
 
+   
 
     //----------------------------------------publicFunctions----------------------------------------
 
@@ -115,6 +138,7 @@ public class GameController : MonoBehaviour
         return score;
     }
 
+    ////function to be used in other scripts to check if the game has already started
     public bool GetStarted()
     {
         return started;

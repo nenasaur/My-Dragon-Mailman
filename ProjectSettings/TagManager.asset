@@ -9,6 +9,7 @@ TagManager:
   - DestroyPoint
   - SpawnPipes
   - Score
+  - oranBerry
   layers:
   - Default
   - TransparentFX

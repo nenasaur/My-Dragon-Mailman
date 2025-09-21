@@ -10,7 +10,7 @@ public class infiniteBackground : MonoBehaviour
 
 {
 
-
+  //----------------------------------------variables---------------------------------------
     private float backgroundVelocity = 0.5f; // speed of background movement  
 
     //check if the game was started by GameController
@@ -18,6 +18,7 @@ public class infiniteBackground : MonoBehaviour
     
     // get the Score from GameController
     private int Score = GameController.instance.GetScore();
+ //----------------------------------------------------------------------------------------
 
 
     void Update()

@@ -5,21 +5,26 @@ using UnityEngine.UI;
 
 public class HeartSystem : MonoBehaviour
 {
-    public int health;
+
+
+   //----------------------------------------variables---------------------------------------
+    public int health = 3;
     public int maxHealth = 3;
+
+   //prevents the berry from recovering more HP t
+    private bool berryUsed = false;
     public Image[] heart;
     public Sprite fullHeart;
     public Sprite emptyHeart;
     [SerializeField] private AudioClip deathSound, hitSound;
+  //----------------------------------------------------------------------------------------
+
 
     // Update is called once per frame
     void Update()
     {
         //calls the function
         HealthLogic();
-
-        // Debug.Log(health); //used in testing
-
 
         //checks if the player has lost all lives
         if (health < 1)
@@ -62,15 +67,32 @@ public class HeartSystem : MonoBehaviour
             health--;
         }
     }
-    
-     void OnTriggerEnter2D(Collider2D other)
+
+    void OnTriggerEnter2D(Collider2D other)
     {
         //checks if the dragon is in contact with the berry
+        if (other.CompareTag("oranBerry") && !berryUsed)
+        {
+
+            health++;
+            //the berry recovers one point of hp
+        }
+
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
         if (other.CompareTag("oranBerry"))
         {
-            health++;
+            //resets the variable so it can be used again
+            berryUsed = false;
         }
-        
+    }
+   
+    //function to be used in other scripts to import the health value
+    public int GetHealth()
+    {
+        return health;
     }
     
 }

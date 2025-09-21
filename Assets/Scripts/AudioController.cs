@@ -15,6 +15,8 @@ public class AudioController : MonoBehaviour
     [SerializeField] private AudioSource soundSource;
      [SerializeField] private AudioSource backgorundsoundSource;
     [SerializeField] private AudioClip soundTrack;
+
+   
     
     //----------------------------------------------------------------------------------------
 
@@ -36,6 +38,8 @@ public class AudioController : MonoBehaviour
         backgorundsoundSource.clip = soundTrack;
         backgorundsoundSource.loop = true;
         backgorundsoundSource.Play();
+        
+       
     }
     
 
