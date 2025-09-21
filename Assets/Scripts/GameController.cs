@@ -54,6 +54,7 @@ public class GameController : MonoBehaviour
 
         // get the health value from heartsystem script
         health = heartsystem.GetHealth();
+      
        
         
 

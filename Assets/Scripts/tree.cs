@@ -152,31 +152,33 @@ public class trees : MonoBehaviour
             //for noctowl
             if (noctowl.activeInHierarchy)
             {
-                Invoke("spawnNoctowl", 0.5f);
                 ariados.SetActive(false);
                 swablu.SetActive(false);
                 paichirisu.SetActive(false);
+                Invoke("spawnNoctowl", 0.3f);
             }
             
             //for paichirisu
             if (paichirisu.activeInHierarchy)
             {
-                Invoke("spawnPaichirisu", 0.5f);
+                Invoke("spawnPaichirisu", 0.3f);
             }
 
             //for swablu 
             if (swablu.activeInHierarchy)
             {
-                Invoke("spawnSwablu", 0.5f);
                 paichirisu.SetActive(false);
+                Invoke("spawnSwablu", 0.3f);
+               
             }
 
              //for ariados
             if (ariados.activeInHierarchy)
             {
-                Invoke("spawnAriados", 0.5f);
                 swablu.SetActive(false);
                 paichirisu.SetActive(false);
+                Invoke("spawnAriados", 0.3f);
+                
             }
            
         }

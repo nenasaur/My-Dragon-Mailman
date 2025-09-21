@@ -13,11 +13,12 @@ public class AudioController : MonoBehaviour
     public static AudioController instance;
 
     [SerializeField] private AudioSource soundSource;
-     [SerializeField] private AudioSource backgorundsoundSource;
+    [SerializeField] private AudioSource backgorundsoundSource;
     [SerializeField] private AudioClip soundTrack;
 
-   
-    
+    private bool started = GameController.instance.GetStarted();
+
+
     //----------------------------------------------------------------------------------------
 
     private void Awake()
@@ -39,15 +40,22 @@ public class AudioController : MonoBehaviour
         backgorundsoundSource.loop = true;
         backgorundsoundSource.Play();
         
-       
-    }
-    
 
-//function responsible for playing audioclips 
+
+    }
+    void Update()
+    {
+        started = GameController.instance.GetStarted();
+    }
+
+
+    //function responsible for playing audioclips 
     public void PlayAudioClip(AudioClip sound, bool loop)
     {
         soundSource.clip = sound;
         soundSource.loop = loop;
         soundSource.Play();
     }
+
+    
 }
