@@ -80,7 +80,7 @@ public class GameController : MonoBehaviour
         }
         
         //changes the value of the variable fogActived to be used again
-        if (score % 10 == 1)
+        if (score % 15 == 1)
         {
             fogActived = false;
         }

@@ -50,37 +50,38 @@ public class trees : MonoBehaviour
                                           +---------------+------+ 
                
         */
-
-        //noctowl conditions
-        if (Score % 7 == 0 && Score != 0 && Score > 50)
-        {
-            noctowl.SetActive(true);
-        }
+             
         
-         //ariados conditions
-        if (!noctowl.activeInHierarchy && Score % 5 == 0 && Score != 0 && Score > 15)
-        {
-            ariados.SetActive(true);
-        }
 
-       //swablu conditions 
-        if (!ariados.activeInHierarchy && Score % 3 == 0 && Score != 0)
-        {
-            swablu.SetActive(true);
-        }
+            // 1st priority: Noctowl
+            if (Score % 7 == 0 && Score != 0 && Score > 50)
+            {
+                noctowl.SetActive(true);
+                return; 
+            }
 
-        //pachirisu conditions 
-        if (Score % 2 == 0 && !swablu.activeInHierarchy || Score == 0 || Score == 1)
-        {
-            paichirisu.SetActive(true);
-        }
-        //condition for some other prime number
-        if (!swablu.activeInHierarchy && Score % 2 == 1)
-        {
-            paichirisu.SetActive(true);
-        }
+            // 2st priority: Ariados
+            if (Score % 5 == 0 && Score != 0 && Score > 15)
+            {
+                ariados.SetActive(true);
+                return;
+            }
+
+            // 3st priority: Swablu
+            if (Score % 3 == 0 && Score != 0)
+            {
+                swablu.SetActive(true);
+                return;
+            }
+
+            // 4st priority: Pachirisu
+            if (Score % 2 == 0 || Score == 0 || Score == 1 || Score % 2 == 1)
+            {
+                paichirisu.SetActive(true);
+                return;
+            }
         
-        //----------------------------------------------------------------------------------------------------
+         //----------------------------------------------------------------------------------------------------
 
     }
 
@@ -152,9 +153,9 @@ public class trees : MonoBehaviour
             //for noctowl
             if (noctowl.activeInHierarchy)
             {
+                paichirisu.SetActive(false);
                 ariados.SetActive(false);
                 swablu.SetActive(false);
-                paichirisu.SetActive(false);
                 Invoke("spawnNoctowl", 0.3f);
             }
             
