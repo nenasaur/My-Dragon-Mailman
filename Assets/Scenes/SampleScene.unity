@@ -531,12 +531,12 @@ GameObject:
   - component: {fileID: 400803287}
   - component: {fileID: 400803286}
   m_Layer: 5
-  m_Name: Image
+  m_Name: LetterIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &400803285
 RectTransform:
   m_ObjectHideFlags: 0
@@ -611,7 +611,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &507073779
 RectTransform:
   m_ObjectHideFlags: 0
@@ -966,11 +966,16 @@ MonoBehaviour:
   heartsystem: {fileID: 1959985014}
   message: {fileID: 117013227}
   Dragon: {fileID: 1959985006}
+  LetterIcon: {fileID: 400803284}
+  heart: {fileID: 1073648679}
+  heart1: {fileID: 507073778}
+  heart2: {fileID: 1496042751}
   tree: {fileID: 2841665713242591779, guid: 0526dfb8e661a82418c3c3e980dda923, type: 3}
   source: {fileID: 538620779}
   gameOver: {fileID: 2131005564}
   fog: {fileID: 1765029042119902445, guid: 23958553dce18604fa16606fa1004d59, type: 3}
   oranberry: {fileID: 6330572245843295247, guid: 0a558ee062d93594899b47ff7c69017b, type: 3}
+  ScoreIcon: {fileID: 949965408}
   scoreText: {fileID: 949965410}
 --- !u!1 &949965408
 GameObject:
@@ -989,7 +994,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &949965409
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1068,7 +1073,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1073648680
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1143,7 +1148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1496042752
 RectTransform:
   m_ObjectHideFlags: 0

@@ -14,15 +14,15 @@ public class GameController : MonoBehaviour
     //--------------------------------------------------variables------------------------------------------------------    
 
     public HeartSystem heartsystem;
-    [SerializeField] private GameObject message, Dragon;
-    [SerializeField] private GameObject tree, source, gameOver, fog, oranberry ;
+    [SerializeField] private GameObject message, Dragon, LetterIcon, heart, heart1, heart2;
+    [SerializeField] private GameObject tree, source, gameOver, fog, oranberry, ScoreIcon;
     [SerializeField] private Text scoreText;
 
 
     private float interval = 1.5f;
-    private bool started, fogActived, oranBerryActived;
-    private int score, health ;
-    
+    private bool started, fogActived, oranBerryActived, pause;
+    private int score, health;
+
 
     //----------------------------------------------------------------------------------------------------------------  
 
@@ -42,9 +42,10 @@ public class GameController : MonoBehaviour
 
     //default values ​​when starting the game
     void Start()
-    {  
+    {
         score = 0;
         started = false;
+        pause = false;
         InvokeRepeating("SpawnTrees", 0f, interval);//spawn trees 
     }
 
@@ -54,9 +55,9 @@ public class GameController : MonoBehaviour
 
         // get the health value from heartsystem script
         health = heartsystem.GetHealth();
-      
-       
-        
+
+
+
 
         // conditions to spawn fog
         if (score % 10 == 0 && score != 0 && !fogActived)
@@ -72,13 +73,13 @@ public class GameController : MonoBehaviour
         // conditions to spawn oranBerry
         if (health < 3 && !oranBerryActived && !fogActived)
         {
-            for (int i = 0; i <1 ; i++)// spawn 1 oranBerry
+            for (int i = 0; i < 1; i++)// spawn 1 oranBerry
             {
                 Instantiate(oranberry);//spawn the berry 
             }
             oranBerryActived = true;
         }
-        
+
         //changes the value of the variable fogActived to be used again
         if (score % 15 == 1)
         {
@@ -90,15 +91,42 @@ public class GameController : MonoBehaviour
         {
             oranBerryActived = false;
         }
-        
+
         //starting the game
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Destroy(message);
             Dragon.SetActive(true);
             started = true;
+            
+            //UI changes when game starts
+            LetterIcon.SetActive(true);
+            heart.SetActive(true);
+            heart1.SetActive(true);
+            heart2.SetActive(true);
+            ScoreIcon.SetActive(true);
+
         }
 
+
+        //pause the game
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            //pause
+            if (!pause)
+            {
+                Time.timeScale = 0;
+                pause = true;
+            }
+            //resume
+            else
+            {
+                Time.timeScale = 1;
+                pause = false;
+            }
+
+        }
+         
 
     }
 
@@ -114,7 +142,6 @@ public class GameController : MonoBehaviour
         );
     }
 
-   
 
     //----------------------------------------publicFunctions----------------------------------------
 
@@ -129,7 +156,11 @@ public class GameController : MonoBehaviour
     //function to use when the player hits the ground or collides with trees
     public void GameOver()
     {
+        //UI changes when game over
         gameOver.SetActive(true);
+        heart.SetActive(false);
+        heart1.SetActive(false);
+        heart2.SetActive(false);
         Time.timeScale = 0;
     }
 
@@ -145,6 +176,13 @@ public class GameController : MonoBehaviour
         return started;
     }
 
+    //function to exit the game
+    public void Exit()
+    {
+        Application.Quit();
+    }
+
+   
     
     
 //-----------------------------------------------------------------------------------------------
