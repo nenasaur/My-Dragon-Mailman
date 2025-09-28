@@ -14,9 +14,9 @@ public class GameController : MonoBehaviour
     //--------------------------------------------------variables------------------------------------------------------    
 
     public HeartSystem heartsystem;
-    [SerializeField] private GameObject message, Dragon, LetterIcon, heart, heart1, heart2;
+    [SerializeField] private GameObject message, Dragon, LetterIcon, heart, heart1, heart2, pauseMenu;
     [SerializeField] private GameObject tree, source, gameOver, fog, oranberry, ScoreIcon;
-    [SerializeField] private Text scoreText;
+    [SerializeField] private Text scoreText, pauseScoreText;
 
 
     private float interval = 1.5f;
@@ -117,12 +117,14 @@ public class GameController : MonoBehaviour
             {
                 Time.timeScale = 0;
                 pause = true;
+                pauseMenu.SetActive(true);
             }
             //resume
             else
             {
                 Time.timeScale = 1;
                 pause = false;
+                pauseMenu.SetActive(false);
             }
 
         }
@@ -151,6 +153,7 @@ public class GameController : MonoBehaviour
     {
         this.score += score;
         scoreText.text = this.score.ToString();
+        pauseScoreText.text = this.score.ToString();
     }
 
     //function to use when the player hits the ground or collides with trees
@@ -180,6 +183,7 @@ public class GameController : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
+        Debug.Log("exit");
     }
 
    
